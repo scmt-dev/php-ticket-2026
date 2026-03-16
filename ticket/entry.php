@@ -1,4 +1,11 @@
-
+<?php
+    require_once '../db.php';
+    // insert 
+    $sql = "insert into tickets (title, description, status, user_id) values (?, ?, ?, ?)";
+    $stmt = $db->prepare($sql);
+    $stmt->bind_param("sssi", $title, $description, $status, $user_id);
+    
+?>
 <form action="" method="post">
     <div>
         Title: 
