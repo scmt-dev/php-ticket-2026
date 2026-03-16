@@ -1,0 +1,31 @@
+# Composer dependencies
+/vendor/
+
+# Environment variables and configuration files
+.env
+.env.local
+config.php # Example of a sensitive config file
+*.sqlite
+
+# Log files and temporary files
+/logs/
+*.log
+/tmp/
+/temp/
+
+# Build artifacts and cache directories
+/build/
+/cache/
+
+# IDE and OS specific files
+.idea/ # PhpStorm/IntelliJ
+.vscode/ # VS Code
+.DS_Store # macOS
+Thumbs.db # Windows
+npm-debug.log*
+
+# Node.js dependencies (if using front-end tooling)
+/node_modules/
+
+# Exclude specific files from being ignored (optional negation rule)
+!important.log # Example of re-including a specific log file
