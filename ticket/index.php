@@ -7,7 +7,7 @@ left join users u on t.user_id = u.id order by t.created_at desc";
 $result = $db->query($sql);
 // display tickets
 echo "<h1>Tickets</h1>";
-echo "<a href='create.php'>Create New Ticket</a>";
+echo "<a href='entry.php'>Create New Ticket</a>";
 echo "<table border='1' cellpadding='5' cellspacing='0'>";
 echo "<tr>";
   echo "<th>Title</th>";
