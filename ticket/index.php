@@ -16,6 +16,7 @@ echo "<tr>";
   echo "<th>Created At</th>";
   echo "<th>Updated At</th>";
   echo "<th>User</th>";
+  echo "<th>Actions</th>";
 echo "</tr>";
 while($row = $result->fetch_assoc()) {
   echo "<tr>";
