@@ -1,0 +1,23 @@
+POST http://localhost/ticket/api.php HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Mark"
+}
+
+###
+GET http://localhost/ticket/api.php HTTP/1.1
+content-type: application/json
+
+###
+GET http://localhost/ticket/api/users.php HTTP/1.1
+content-type: application/json
+
+### 
+POST http://localhost/ticket/api/users.php HTTP/1.1
+content-type: application/json
+
+{
+    "password": "12345",
+    "confirm_password":" "
+}

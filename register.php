@@ -4,6 +4,9 @@ require_once 'db.php';
 $isSubmitted = isset($_POST['register']);
 $message = '';
 $error = false;
+
+$fileName = 'logs/error-'.date('Y-m-d').'.log';
+
 if($isSubmitted) {
     $name = $_POST['name'];
     $email = $_POST['email'];
@@ -50,6 +53,12 @@ if($isSubmitted) {
         $stmt->execute();
         $stmt->close();
         $message = "User registered successfully!";
+    }
+
+    if($error) {
+        $logData = date('Y-m-d H:i:s').'|'.
+        $_SERVER['REMOTE_ADDR']."|$message\n";
+        file_put_contents($fileName, $logData, FILE_APPEND);
     }
 
     

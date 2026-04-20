@@ -1,33 +1,34 @@
-<?php
-$version = 'v1';
-echo 'API version: ' . $version;
+<?php 
 
-$name = 'John Doe';
-echo '<br>Hello, ' . $name . '!';
+header('Content-Type: application/json');
 
-
-$a = 1;
-$b = 2;
-$sum = $a + $b;
-echo $sum;
-// x = (7+3)^3
-
-if($a > $b) {
-    echo '<br>a is greater than b';
-} else {
-    echo '<br>a is not greater than b';
+$data = [
+    'version' => '1.0',
+    'message' => 'Hello, World!',
+    'status' => 'success'
+];
+$method = $_SERVER['REQUEST_METHOD'];
+switch ($method) {
+    case 'POST':
+        // read the raw input data
+        $input = file_get_contents('php://input');
+        // decode the JSON data
+        $json = json_decode($input, true);
+        $data['name'] = $json['name'] ?? 'Unknown';
+        echo json_encode([
+            'method' => 'POST',
+            'message' => 'Data received successfully',
+            'data' => $data
+        ]);
+        break;
+    case 'GET':
+        echo json_encode([
+            'method' => 'GET',
+            'message'=> 'Data retrieved successfully',
+            'data' => $data
+        ]);
+        break;
+    default:
+        echo json_encode($data);
+        break;
 }
-for($i = 0; $i < 1000; $i++) {
-    echo "<br> I'm Sorry";
-}
-
-// ****** comment single line comment
-############## single ##### line comment
-
-/*
-
-************* 
-multi line comment
-multi line comment
-multi line comment
-*/
