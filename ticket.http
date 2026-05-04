@@ -1,0 +1,11 @@
+POST http://localhost/ticket/api/tickets.php HTTP/1.1
+content-type: application/json
+
+{
+    "title": "Test Ticket 1",
+    "description": "This is a test ticket"
+}
+
+### 
+GET http://localhost/ticket/api/tickets.php HTTP/1.1
+content-type: application/json

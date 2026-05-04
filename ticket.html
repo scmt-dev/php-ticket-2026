@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tickets</title>
+</head>
+<body>
+    <h1>Tickets</h1>
+    <h3>Create new ticket</h3>
+    <form action="" method="post">
+        <input id="title" type="text" name="title" placeholder="Title" required>
+        <textarea id="description" name="description" placeholder="Description"></textarea>
+        <button id="submit" type="button" onclick="createTicket()">Create Ticket</button>
+    </form>
+
+    <script>
+        const API = 'http://localhost/ticket/api'
+        async function createTicket() {
+            /// Create a new ticket
+            const title = document.getElementById('title').value;
+            const description = document.getElementById('description').value;
+            const response = await fetch(`${API}/tickets.php`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ title, description })
+            });
+            const result = await response.json();
+            console.log(result);    
+        }
+        async function fetchTickets() {
+            const response = await fetch(`${API}/tickets.php`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            const tickets = await response.json();
+            console.log(tickets);
+        }
+
+        fetchTickets();
+    </script>
+</body>
+</html>
