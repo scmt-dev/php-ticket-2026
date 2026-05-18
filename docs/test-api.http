@@ -1,0 +1,201 @@
+@baseUrl = http://localhost/ticket/api
+
+### ###############################
+### CATEGORIES
+### ###############################
+
+### Get all categories
+GET {{baseUrl}}/categories.php
+Accept: application/json
+
+###
+
+### Get single category (replace id=1 with existing ID)
+GET {{baseUrl}}/categories.php?id=1
+Accept: application/json
+
+###
+
+### Create a category
+POST {{baseUrl}}/categories.php
+Content-Type: application/json
+
+{
+  "name": "Drinks",
+  "icon": "fa-glass-water"
+}
+
+###
+
+### Update a category (replace id=1 with existing ID)
+PUT {{baseUrl}}/categories.php?id=1
+Content-Type: application/json
+
+{
+  "name": "Beverages",
+  "icon": "fa-mug-hot"
+}
+
+###
+
+### Delete a category (replace id=1 with existing ID)
+DELETE {{baseUrl}}/categories.php?id=1
+Accept: application/json
+
+### ###############################
+### PRODUCTS
+### ###############################
+
+### Get all products
+GET {{baseUrl}}/products.php
+Accept: application/json
+
+###
+
+### Get products by category (replace category_id=1 with existing ID)
+GET {{baseUrl}}/products.php?category_id=1
+Accept: application/json
+
+###
+
+### Get single product (replace id=1 with existing ID)
+GET {{baseUrl}}/products.php?id=1
+Accept: application/json
+
+###
+
+### Create a product
+POST {{baseUrl}}/products.php
+Content-Type: application/json
+
+{
+  "name": "Coca-Cola",
+  "description": "Classic refreshing soft drink",
+  "price": 2.50,
+  "category_id": 1,
+  "image_url": "images/cola.png"
+}
+
+###
+
+### Update a product (replace id=1 with existing ID)
+PUT {{baseUrl}}/products.php?id=1
+Content-Type: application/json
+
+{
+  "name": "Pepsi",
+  "description": "The choice of a new generation",
+  "price": 2.75,
+  "category_id": 1,
+  "image_url": "images/pepsi.png"
+}
+
+###
+
+### Delete a product (replace id=1 with existing ID)
+DELETE {{baseUrl}}/products.php?id=1
+Accept: application/json
+
+### ###############################
+### ORDERS
+### ###############################
+
+### Get all orders
+GET {{baseUrl}}/orders.php
+Accept: application/json
+
+###
+
+### Get single order with joined items (replace id=1 with existing ID)
+GET {{baseUrl}}/orders.php?id=1
+Accept: application/json
+
+###
+
+### Create an order with items
+POST {{baseUrl}}/orders.php
+Content-Type: application/json
+
+{
+  "user_id": null,
+  "table_number": 5,
+  "discount": 0,
+  "items": [
+    {
+      "product_id": 1,
+      "quantity": 2
+    },
+    {
+      "product_id": 2,
+      "quantity": 1
+    }
+  ]
+}
+
+###
+
+### Update an order details (replace id=1 with existing ID)
+PUT {{baseUrl}}/orders.php?id=1
+Content-Type: application/json
+
+{
+  "user_id": null,
+  "table_number": 6,
+  "discount": 10.00
+}
+
+###
+
+### Delete an order and its items (replace id=1 with existing ID)
+DELETE {{baseUrl}}/orders.php?id=1
+Accept: application/json
+
+### ###############################
+### ORDER ITEMS
+### ###############################
+
+### Get all order items
+GET {{baseUrl}}/order_items.php
+Accept: application/json
+
+###
+
+### Get order items by order (replace order_id=1 with existing ID)
+GET {{baseUrl}}/order_items.php?order_id=1
+Accept: application/json
+
+###
+
+### Get single order item (replace id=1 with existing ID)
+GET {{baseUrl}}/order_items.php?id=1
+Accept: application/json
+
+###
+
+### Add item to existing order
+POST {{baseUrl}}/order_items.php
+Content-Type: application/json
+
+{
+  "order_id": 1,
+  "product_id": 3,
+  "quantity": 2
+}
+
+###
+
+### Update order item quantity (replace id=1 with existing ID)
+PUT {{baseUrl}}/order_items.php?id=1
+Content-Type: application/json
+
+{
+  "order_id": 1,
+  "product_id": 3,
+  "quantity": 5
+}
+
+###
+
+### Delete an order item (replace id=1 with existing ID)
+DELETE {{baseUrl}}/order_items.php?id=1
+Accept: application/json
