@@ -29,3 +29,5 @@ npm-debug.log*
 
 # Exclude specific files from being ignored (optional negation rule)
 !important.log # Example of re-including a specific log file
+
+uploads
